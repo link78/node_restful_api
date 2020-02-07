@@ -30,22 +30,22 @@ var port = process.env.PORT || 8010;
 
 
 app.use('/', bookRouter);
-var jwtCheck = jwt({
-    secret: jwks.expressJwtSecret({
-        cache: true,
-        rateLimit: true,
-        jwksRequestsPerMinute: 5,
-        jwksUri: ""
-    }),
-    audience: '',
-    issuer: "",
-    algorithms: ['RS256']
-});
+//var jwtCheck = jwt({
+  //  secret: jwks.expressJwtSecret({
+    //    cache: true,
+     //   rateLimit: true,
+     //   jwksRequestsPerMinute: 5,
+      //  jwksUri: ""
+   // }),
+  //  audience: '',
+  //  issuer: "",
+  //  algorithms: ['RS256']
+//});
 
-app.use(jwtCheck);
-app.get('/authorized', function (req, res) {
-  res.send('Secured Resource');
-});
+//app.use(jwtCheck);
+//app.get('/authorized', function (req, res) {
+//  res.send('Secured Resource');
+//});
 
 
 
