@@ -19,7 +19,7 @@
     "gulp-nodemon": "^2.2.1",
     "jade": "^1.11.0",
     "jwks-rsa": "^1.2.1",
-    "mongodb": "^3.0.5",
+    "mongodb": "^3.1.13",
     "mongoose": "^5.10.6",
     "morgan": "^1.9.0",
     "nodemon": "^1.17.3",
