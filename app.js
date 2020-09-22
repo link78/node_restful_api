@@ -6,8 +6,11 @@ var jwks = require('jwks-rsa');
 
 // database connection
 
-mongoose.connect('mongodb://localhost/books');
+var databaseUrl= "mongodb+srv://derka:Marine7815@cluster0.d45v4.azure.mongodb.net/fcsproductapidb?retryWrites=true&w=majority";
+
+//mongoose.connect('mongodb://localhost/books');
 mongoose.Promise = global.Promise;
+mongoose.connect(databaseUrl, {useNewUrlParser: true, promiseLibrary: require('bluebird')});
 var dbConnection = mongoose.connection;
 dbConnection.on('erro', console.error.bind(console, 'MongoDB connection'));
 dbConnection.once('open',function(){
