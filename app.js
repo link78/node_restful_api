@@ -1,21 +1,31 @@
 const express = require('express');
 const mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-var jwt = require('express-jwt');
-var jwks = require('jwks-rsa');
+const chalk = require('chalk');
+
+
+//var jwt = require('express-jwt');
+//var jwks = require('jwks-rsa');
 
 // database connection
 
 var databaseUrl= "mongodb+srv://derka:Marine7815@cluster0.d45v4.azure.mongodb.net/fcsproductapidb?retryWrites=true&w=majority";
 
-//mongoose.connect('mongodb://localhost/books');
+//var databaseUrl= `mongodb://localhost:27017/fcsproductapidb`;
 mongoose.Promise = global.Promise;
-mongoose.connect(databaseUrl, {useNewUrlParser: true, promiseLibrary: require('bluebird')});
-var dbConnection = mongoose.connection;
-dbConnection.on('erro', console.error.bind(console, 'MongoDB connection'));
-dbConnection.once('open',function(){
-	console.log('successful connection');
+mongoose.connect(databaseUrl, { useNewUrlParser: true, useUnifiedTopology: true}, function(err){
+  if (err){
+    console.log(chalk.red('Could not connect to db'));
+    console.log(chalk.red(err));
+    mongoose.connection.close();
+    process.exit(-1);
+
+
+  }else {
+    console.log('successful connection');
+  }
 });
+
 
 
 var app = express();
